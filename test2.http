@@ -1,0 +1,7 @@
+POST http://localhost:8080/api/doc/qa
+Content-Type: application/json
+
+{
+  "question": "API接口返回403错误怎么解决？",
+  "context": "用户权限验证"
+}

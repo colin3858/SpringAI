@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: yu-ai-agent
+  
+  
+  # 阿里云百练配置
+  ai:
+    dashscope:
+      api-key: sk-dc42a8234bf64078b29c3501e5158bde
+      chat:
+        options:
+          model: qwen-plus
+
+# Swagger文档配置
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+# 日志配置
+logging:
+  level:
+    com.yupi.yuaiagent: INFO
+    org.springframework.ai: DEBUG

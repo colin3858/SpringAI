@@ -1,0 +1,13 @@
+POST http://localhost:8080/api/doc/generate
+Content-Type: application/json
+Accept: */*
+
+{
+  "apiName": "用户注册接口",
+  "apiPath": "/api/user/register",
+  "httpMethod": "POST",
+  "description": "用户注册功能，支持邮箱和手机号注册",
+  "parameters": "username: 用户名(必填), email: 邮箱(必填), password: 密码(必填), phone: 手机号(可选)",
+  "responseFormat": "{ \"code\": 200, \"message\": \"注册成功\", \"data\": { \"userId\": 12345, \"username\": \"test\" } }"
+}
+
