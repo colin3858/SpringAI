@@ -15,9 +15,11 @@ import java.util.Map;
 public class ApiQaService {
     
     private final ChatClient chatClient;
+    private final FileService fileService;
     
-    public ApiQaService(ChatClient chatClient) {
+    public ApiQaService(ChatClient chatClient, FileService fileService) {
         this.chatClient = chatClient;
+        this.fileService = fileService;
     }
     
     public String answerQuestion(QuestionRequest request) {
@@ -47,7 +49,13 @@ public class ApiQaService {
             Prompt prompt = template.create(variables);
             ChatResponse response = chatClient.prompt(prompt).call().chatResponse();
             
-            return response.getResult().getOutput().getText();
+            String answer = response.getResult().getOutput().getText();
+            
+            // 保存问答为 Markdown 文件
+            String filePath = fileService.saveQaMarkdownFile(request.getQuestion(), answer);
+            log.info("问答记录已保存到文件: {}", filePath);
+            
+            return answer;
             
         } catch (Exception e) {
             log.error("回答问题失败", e);

@@ -1,4 +1,3 @@
-
 package com.yupi.yuaiagent.controller;
 
 import com.yupi.yuaiagent.model.ApiDocRequest;
@@ -27,11 +26,15 @@ public class ApiDocController {
     }
     
     @PostMapping("/generate")
-    @Operation(summary = "生成API文档", description = "基于API元数据自动生成详细的API文档")
+    @Operation(summary = "生成API文档", description = "基于API元数据自动生成详细的API文档并保存为Markdown文件")
     public ResponseEntity<String> generateApiDoc(@Valid @RequestBody ApiDocRequest request) {
         try {
             String doc = apiDocService.generateApiDoc(request);
-            return ResponseEntity.ok(doc);
+            
+            // 在响应中添加文件保存提示
+            String response = doc + "\n\n---\n**注意**: 文档已自动保存为 Markdown 文件到 `generated-docs` 目录中。";
+            
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             log.error("生成API文档失败", e);
             return ResponseEntity.internalServerError().body("生成API文档失败: " + e.getMessage());
@@ -39,11 +42,15 @@ public class ApiDocController {
     }
     
     @PostMapping("/qa")
-    @Operation(summary = "API智能问答", description = "回答关于API使用、错误排查等问题")
+    @Operation(summary = "API智能问答", description = "回答关于API使用、错误排查等问题并保存为Markdown文件")
     public ResponseEntity<String> answerQuestion(@Valid @RequestBody QuestionRequest request) {
         try {
             String answer = apiQaService.answerQuestion(request);
-            return ResponseEntity.ok(answer);
+            
+            // 在响应中添加文件保存提示
+            String response = answer + "\n\n---\n**注意**: 问答记录已自动保存为 Markdown 文件到 `generated-docs` 目录中。";
+            
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             log.error("回答问题失败", e);
             return ResponseEntity.internalServerError().body("回答问题失败: " + e.getMessage());

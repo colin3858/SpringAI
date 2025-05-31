@@ -8,6 +8,8 @@ import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 @Slf4j
@@ -15,9 +17,11 @@ import java.util.Map;
 public class ApiDocService {
     
     private final ChatClient chatClient;
+    private final FileService fileService;
     
-    public ApiDocService(ChatClient chatClient) {
+    public ApiDocService(ChatClient chatClient, FileService fileService) {
         this.chatClient = chatClient;
+        this.fileService = fileService;
     }
     
     public String generateApiDoc(ApiDocRequest request) {
@@ -57,11 +61,46 @@ public class ApiDocService {
             Prompt prompt = template.create(variables);
             ChatResponse response = chatClient.prompt(prompt).call().chatResponse();
             
-            return response.getResult().getOutput().getText();
+            String generatedDoc = response.getResult().getOutput().getText();
+            
+            // 添加文档头部信息
+            String fullDoc = String.format("""
+                # %s API文档
+                
+                > **生成时间**: %s  
+                > **API路径**: `%s`  
+                > **HTTP方法**: `%s`  
+                > **文档版本**: 1.0
+                
+                ---
+                
+                %s
+                
+                ---
+                *本文档由AI智能生成，如有疑问请联系API负责人*
+                """, 
+                request.getApiName(),
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+                request.getApiPath(),
+                request.getHttpMethod(),
+                generatedDoc
+            );
+            
+            // 保存为 Markdown 文件
+            String fileName = sanitizeFileName(request.getApiName()) + "_api_doc";
+            String filePath = fileService.saveMarkdownFile(fullDoc, fileName);
+            log.info("API文档已保存到文件: {}", filePath);
+            
+            return fullDoc;
             
         } catch (Exception e) {
             log.error("生成API文档失败", e);
             throw new RuntimeException("生成API文档失败: " + e.getMessage());
         }
+    }
+    
+    private String sanitizeFileName(String fileName) {
+        return fileName.replaceAll("[\\\\/:*?\"<>|]", "_")
+                      .replaceAll("\\s+", "_");
     }
 }
