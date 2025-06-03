@@ -1,4 +1,10 @@
-com\yupi\yuaiagent\controller\ApiDocController.class
+com\yupi\yuaiagent\model\QuestionRequest.class
 com\yupi\yuaiagent\service\ApiDocService.class
 com\yupi\yuaiagent\service\FileService.class
+com\yupi\yuaiagent\YuAiAgentApplication.class
+com\yupi\yuaiagent\config\ChatClientConfig.class
+com\yupi\yuaiagent\controller\ApiDocController.class
 com\yupi\yuaiagent\service\ApiQaService.class
+com\yupi\yuaiagent\model\ApiDocRequest.class
+com\yupi\yuaiagent\rag\ApiDocumentLoader.class
+com\yupi\yuaiagent\rag\ApiVectorStoreConfig.class

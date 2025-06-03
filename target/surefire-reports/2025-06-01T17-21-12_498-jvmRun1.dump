@@ -1,0 +1,676 @@
+# Created at 2025-06-01T17:22:35.228
+Exiting self fork JVM. Received SHUTDOWN command from Maven shutdown hook.
+Thread dump before exiting the process (17652@DESKTOP-LPBS7DC):
+"main" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@21.0.7/sun.nio.ch.Net.poll(Native Method)
+        at java.base@21.0.7/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:191)
+        at java.base@21.0.7/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:280)
+        at java.base@21.0.7/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:304)
+        at java.base@21.0.7/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+        at java.base@21.0.7/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+        at java.base@21.0.7/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+        at java.base@21.0.7/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
+        at java.base@21.0.7/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
+        at java.base@21.0.7/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
+        at java.base@21.0.7/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
+        at java.base@21.0.7/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1066)
+        at java.base@21.0.7/java.io.BufferedInputStream.fill(BufferedInputStream.java:291)
+        at java.base@21.0.7/java.io.BufferedInputStream.read1(BufferedInputStream.java:347)
+        at java.base@21.0.7/java.io.BufferedInputStream.implRead(BufferedInputStream.java:420)
+        at java.base@21.0.7/java.io.BufferedInputStream.read(BufferedInputStream.java:399)
+        at java.base@21.0.7/sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:827)
+        at java.base@21.0.7/sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:759)
+        at java.base@21.0.7/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1705)
+        at java.base@21.0.7/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1614)
+        at java.base@21.0.7/sun.net.www.protocol.http.HttpURLConnection.getHeaderFieldKey(HttpURLConnection.java:3303)
+        at java.base@21.0.7/sun.net.www.protocol.https.HttpsURLConnectionImpl.getHeaderFieldKey(HttpsURLConnectionImpl.java:276)
+        at app//org.springframework.http.client.SimpleClientHttpResponse.getHeaders(SimpleClientHttpResponse.java:69)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultConvertibleClientHttpResponse.getHeaders(DefaultRestClient.java:868)
+        at app//org.springframework.web.client.DefaultRestClient.getContentType(DefaultRestClient.java:266)
+        at app//org.springframework.web.client.DefaultRestClient.readWithMessageConverters(DefaultRestClient.java:212)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.readBody(DefaultRestClient.java:814)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.lambda$toEntityInternal$2(DefaultRestClient.java:770)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultResponseSpec$$Lambda/0x0000022281795e28.exchange(Unknown Source)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:574)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:535)
+        at app//org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:677)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:809)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntityInternal(DefaultRestClient.java:769)
+        at app//org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.toEntity(DefaultRestClient.java:758)
+        at app//com.alibaba.cloud.ai.dashscope.api.DashScopeApi.chatCompletionEntity(DashScopeApi.java:1332)
+        at app//com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel.lambda$call$1(DashScopeChatModel.java:176)
+        at app//com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel$$Lambda/0x0000022281865678.doWithRetry(Unknown Source)
+        at app//org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:357)
+        at app//org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:230)
+        at app//com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel.lambda$call$3(DashScopeChatModel.java:176)
+        at app//com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel$$Lambda/0x000002228185e758.get(Unknown Source)
+        at app//io.micrometer.observation.Observation.observe(Observation.java:564)
+        at app//com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel.call(DashScopeChatModel.java:172)
+        at app//org.springframework.ai.chat.client.DefaultChatClient$DefaultChatClientRequestSpec$1.aroundCall(DefaultChatClient.java:680)
+        at app//org.springframework.ai.chat.client.advisor.DefaultAroundAdvisorChain.lambda$nextAroundCall$1(DefaultAroundAdvisorChain.java:98)
+        at app//org.springframework.ai.chat.client.advisor.DefaultAroundAdvisorChain$$Lambda/0x000002228185dc28.get(Unknown Source)
+        at app//io.micrometer.observation.Observation.observe(Observation.java:564)
+        at app//org.springframework.ai.chat.client.advisor.DefaultAroundAdvisorChain.nextAroundCall(DefaultAroundAdvisorChain.java:98)
+        at app//org.springframework.ai.chat.client.DefaultChatClient$DefaultCallResponseSpec.doGetChatResponse(DefaultChatClient.java:493)
+        at app//org.springframework.ai.chat.client.DefaultChatClient$DefaultCallResponseSpec.lambda$doGetObservableChatResponse$1(DefaultChatClient.java:482)
+        at app//org.springframework.ai.chat.client.DefaultChatClient$DefaultCallResponseSpec$$Lambda/0x000002228185c3f8.get(Unknown Source)
+        at app//io.micrometer.observation.Observation.observe(Observation.java:564)
+        at app//org.springframework.ai.chat.client.DefaultChatClient$DefaultCallResponseSpec.doGetObservableChatResponse(DefaultChatClient.java:482)
+        at app//org.springframework.ai.chat.client.DefaultChatClient$DefaultCallResponseSpec.doGetChatResponse(DefaultChatClient.java:466)
+        at app//org.springframework.ai.chat.client.DefaultChatClient$DefaultCallResponseSpec.chatResponse(DefaultChatClient.java:510)
+        at app//com.yupi.yuaiagent.service.ApiQaService.answerQuestion(ApiQaService.java:65)
+        at app//com.yupi.yuaiagent.service.ApiQaServiceTest.testAnswerQuestionWithEmptyContext(ApiQaServiceTest.java:79)
+        at java.base@21.0.7/java.lang.invoke.LambdaForm$DMH/0x0000022281140800.invokeVirtual(LambdaForm$DMH)
+        at java.base@21.0.7/java.lang.invoke.LambdaForm$MH/0x00000222815f4400.invoke(LambdaForm$MH)
+        at java.base@21.0.7/java.lang.invoke.Invokers$Holder.invokeExact_MT(Invokers$Holder)
+        at java.base@21.0.7/jdk.internal.reflect.DirectMethodHandleAccessor.invokeImpl(DirectMethodHandleAccessor.java:153)
+        at java.base@21.0.7/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+        at java.base@21.0.7/java.lang.reflect.Method.invoke(Method.java:580)
+        at app//org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:767)
+        at app//org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+        at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+        at app//org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+        at app//org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+        at app//org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda/0x00000222810931f8.apply(Unknown Source)
+        at app//org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+        at app//org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall$$Lambda/0x00000222810935f8.apply(Unknown Source)
+        at app//org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+        at app//org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$$Lambda/0x000002228115e000.apply(Unknown Source)
+        at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+        at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+        at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+        at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+        at app//org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+        at app//org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$8(TestMethodTestDescriptor.java:217)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda/0x00000222815f0e70.execute(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+        at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda/0x00000222810b3d10.execute(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda/0x00000222810b3af8.invoke(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda/0x00000222810b36f0.execute(Unknown Source)
+        at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+        at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+        at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda/0x00000222810b68b0.accept(Unknown Source)
+        at java.base@21.0.7/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+"Reference Handler" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@21.0.7/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+        at java.base@21.0.7/java.lang.ref.Reference.processPendingReferences(Reference.java:246)
+        at java.base@21.0.7/java.lang.ref.Reference$ReferenceHandler.run(Reference.java:208)
+
+"Finalizer" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/java.lang.Object.wait0(Native Method)
+        at java.base@21.0.7/java.lang.Object.wait(Unknown Source)
+        at java.base@21.0.7/java.lang.Object.wait(Unknown Source)
+        at java.base@21.0.7/java.lang.ref.NativeReferenceQueue.await(NativeReferenceQueue.java:48)
+        at java.base@21.0.7/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:158)
+        at java.base@21.0.7/java.lang.ref.NativeReferenceQueue.remove(NativeReferenceQueue.java:89)
+        at java.base@21.0.7/java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:173)
+
+"Signal Dispatcher" 
+   java.lang.Thread.State: RUNNABLE
+
+"Attach Listener" 
+   java.lang.Thread.State: RUNNABLE
+
+"Notification Thread" 
+   java.lang.Thread.State: RUNNABLE
+
+"Common-Cleaner" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+        at java.base@21.0.7/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+        at java.base@21.0.7/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+        at java.base@21.0.7/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+        at java.base@21.0.7/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:140)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+        at java.base@21.0.7/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:186)
+
+"surefire-forkedjvm-stream-flusher" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1763)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"surefire-forkedjvm-command-thread" 
+   java.lang.Thread.State: RUNNABLE
+        at java.management@21.0.7/sun.management.ThreadImpl.getThreadInfo1(Native Method)
+        at java.management@21.0.7/sun.management.ThreadImpl.getThreadInfo(ThreadImpl.java:187)
+        at app//org.apache.maven.surefire.booter.ForkedBooter.generateThreadDump(ForkedBooter.java:579)
+        at app//org.apache.maven.surefire.booter.ForkedBooter.access$600(ForkedBooter.java:79)
+        at app//org.apache.maven.surefire.booter.ForkedBooter$4.update(ForkedBooter.java:315)
+        at app//org.apache.maven.surefire.booter.CommandReader$CommandRunnable.callListeners(CommandReader.java:357)
+        at app//org.apache.maven.surefire.booter.CommandReader$CommandRunnable.exitByConfiguration(CommandReader.java:367)
+        at app//org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:330)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.logging.0" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1763)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"AsyncAppender-Worker-ASYNC-CONFIG" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-NAMING" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-REMOTE" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-CONFIG" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-NAMING" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-REMOTE" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-CONFIG" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-NAMING" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-REMOTE" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-CONFIG" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-NAMING" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-REMOTE" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-CONFIG" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-NAMING" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"AsyncAppender-Worker-ASYNC-REMOTE" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//ch.qos.logback.core.AsyncAppenderBase$Worker.run(AsyncAppenderBase.java:298)
+
+"com.alibaba.nacos.client.auth.ram.identify.watcher.0" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1763)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"asyncProcessor" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:420)
+        at app//com.alibaba.nacos.client.aliyun.AsyncProcessor$InnerWorker.run(AsyncProcessor.java:69)
+
+"com.alibaba.nacos.client.Worker.0" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.1" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1763)
+        at java.base@21.0.7/java.util.concurrent.ArrayBlockingQueue.poll(ArrayBlockingQueue.java:435)
+        at app//com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient.lambda$startInternal$2(ClientWorker.java:775)
+        at app//com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda/0x00000222816d4450.run(Unknown Source)
+        at java.base@21.0.7/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+        at java.base@21.0.7/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.2" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"HttpClient-2-SelectorManager" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@21.0.7/sun.nio.ch.WEPoll.wait(Native Method)
+        at java.base@21.0.7/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:114)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:142)
+        at platform/java.net.http@21.0.7/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1369)
+
+"HttpClient-4-SelectorManager" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@21.0.7/sun.nio.ch.WEPoll.wait(Native Method)
+        at java.base@21.0.7/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:114)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:142)
+        at platform/java.net.http@21.0.7/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1369)
+
+"HttpClient-5-SelectorManager" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@21.0.7/sun.nio.ch.WEPoll.wait(Native Method)
+        at java.base@21.0.7/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:114)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:142)
+        at platform/java.net.http@21.0.7/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1369)
+
+"HttpClient-6-SelectorManager" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@21.0.7/sun.nio.ch.WEPoll.wait(Native Method)
+        at java.base@21.0.7/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:114)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:142)
+        at platform/java.net.http@21.0.7/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1369)
+
+"HttpClient-7-SelectorManager" 
+   java.lang.Thread.State: RUNNABLE
+        at java.base@21.0.7/sun.nio.ch.WEPoll.wait(Native Method)
+        at java.base@21.0.7/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:114)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)
+        at java.base@21.0.7/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:142)
+        at platform/java.net.http@21.0.7/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1369)
+
+"com.alibaba.nacos.client.Worker.3" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.4" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.5" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.6" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.7" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.8" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1763)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.9" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.10" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.11" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.12" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.13" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.14" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"com.alibaba.nacos.client.Worker.15" 
+   java.lang.Thread.State: WAITING
+        at java.base@21.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@21.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:371)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:519)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3780)
+        at java.base@21.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3725)
+        at java.base@21.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1712)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+        at java.base@21.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+        at java.base@21.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+
+"Keep-Alive-Timer" 
+   java.lang.Thread.State: TIMED_WAITING
+        at java.base@21.0.7/java.lang.Thread.sleep0(Native Method)
+        at java.base@21.0.7/java.lang.Thread.sleep(Thread.java:509)
+        at java.base@21.0.7/sun.net.www.http.KeepAliveCache.run(KeepAliveCache.java:238)
+        at java.base@21.0.7/java.lang.Thread.runWith(Thread.java:1596)
+        at java.base@21.0.7/java.lang.Thread.run(Thread.java:1583)
+        at java.base@21.0.7/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:186)
+
+
+
