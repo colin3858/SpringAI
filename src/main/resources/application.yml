@@ -9,7 +9,7 @@ spring:
   # 阿里云百练配置
   ai:
     dashscope:
-      api-key: sk-dc42a8234bf64078b29c3501e5158bde
+      api-key: 
       chat:
         options:
           model: qwen-plus
